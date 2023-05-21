@@ -1,0 +1,1628 @@
+openapi: 3.0.3
+info:
+  title: Api Documentation
+  description: Api Documentation
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: '1.0'
+servers:
+  - url: http://localhost:9098
+    description: Inferred Url
+tags:
+  - name: alimento-controller
+    description: Alimento Controller
+  - name: basic-error-controller
+    description: Basic Error Controller
+  - name: comentario-controller
+    description: Comentario Controller
+  - name: ejercicio-controller
+    description: Ejercicio Controller
+  - name: objetivo-controller
+    description: Objetivo Controller
+  - name: post-controller
+    description: Post Controller
+  - name: sue-ño-controller
+    description: Sue ño Controller
+  - name: usuario-controller
+    description: Usuario Controller
+paths:
+  /alimentos:
+    get:
+      tags:
+        - alimento-controller
+      summary: getAlimentoList
+      operationId: getAlimentoListUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlimentoDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - alimento-controller
+      summary: addAlimento
+      operationId: addAlimentoUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlimentoDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /alimentos/{id}:
+    get:
+      tags:
+        - alimento-controller
+      summary: getAlimentoById
+      operationId: getAlimentoByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AlimentoDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - alimento-controller
+      summary: updateAlimento
+      operationId: updateAlimentoUsingPOST
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlimentoDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - alimento-controller
+      summary: deleteAlimeto
+      operationId: deleteAlimetoUsingDELETE
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /error:
+    get:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingPUT
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingPOST
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingDELETE
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    options:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingOPTIONS
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    head:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingHEAD
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingPATCH
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    trace:
+      tags:
+        - basic-error-controller
+      summary: error
+      operationId: errorUsingTRACE
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /comentarios:
+    get:
+      tags:
+        - comentario-controller
+      summary: index
+      operationId: indexUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ComentarioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - comentario-controller
+      summary: addComentario
+      operationId: addComentarioUsingPOST
+      parameters:
+        - name: id_post
+          in: query
+          description: id_post
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComentarioDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - comentario-controller
+      summary: deleteComentario
+      operationId: deleteComentarioUsingDELETE
+      parameters:
+        - name: comentario_id
+          in: query
+          description: comentario_id
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /comentarios/{id}:
+    get:
+      tags:
+        - comentario-controller
+      summary: getComentarioById
+      operationId: getComentarioByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ComentarioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /ejercicios:
+    get:
+      tags:
+        - ejercicio-controller
+      summary: getEjercicios
+      operationId: getEjerciciosUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EjercicioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - ejercicio-controller
+      summary: addEjercicio
+      operationId: addEjercicioUsingPOST
+      parameters:
+        - name: id_usuario
+          in: query
+          description: id_usuario
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EjercicioDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /ejercicios/{id}:
+    get:
+      tags:
+        - ejercicio-controller
+      summary: getEjercicioById
+      operationId: getEjercicioByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EjercicioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - ejercicio-controller
+      summary: updateEjercicio
+      operationId: updateEjercicioUsingPUT
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EjercicioDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - ejercicio-controller
+      summary: deleteEjercicio
+      operationId: deleteEjercicioUsingDELETE
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /objetivo:
+    get:
+      tags:
+        - objetivo-controller
+      summary: getObjetivoList
+      operationId: getObjetivoListUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjetivoDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - objetivo-controller
+      summary: addObjetivo
+      operationId: addObjetivoUsingPOST
+      parameters:
+        - name: id_usuario
+          in: query
+          description: id_usuario
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjetivoDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - objetivo-controller
+      summary: deleteObjetivo
+      operationId: deleteObjetivoUsingDELETE
+      parameters:
+        - name: objetivo_id
+          in: query
+          description: objetivo_id
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /objetivo/{id}:
+    get:
+      tags:
+        - objetivo-controller
+      summary: getObjetivoById
+      operationId: getObjetivoByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ObjetivoDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /post:
+    get:
+      tags:
+        - post-controller
+      summary: getPostList
+      operationId: getPostListUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - post-controller
+      summary: deletePost
+      operationId: deletePostUsingDELETE
+      parameters:
+        - name: post_id
+          in: query
+          description: post_id
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /post/{id}:
+    get:
+      tags:
+        - post-controller
+      summary: getPostById
+      operationId: getPostByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PostDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - post-controller
+      summary: addPost
+      operationId: addPostUsingPOST
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /post/{id}/comentarios:
+    get:
+      tags:
+        - post-controller
+      summary: getComentariosByPost
+      operationId: getComentariosByPostUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ComentarioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /sueños:
+    get:
+      tags:
+        - sue-ño-controller
+      summary: obtenerTodos
+      operationId: obtenerTodosUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SueñoDTORes'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - sue-ño-controller
+      summary: addSueño
+      operationId: addSueñoUsingPOST
+      parameters:
+        - name: id_usuario
+          in: query
+          description: id_usuario
+          required: true
+          style: form
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SueñoDTOReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /sueños/{id}:
+    get:
+      tags:
+        - sue-ño-controller
+      summary: obtenerPorId
+      operationId: obtenerPorIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SueñoDTORes'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - sue-ño-controller
+      summary: updateSueño
+      operationId: updateSueñoUsingPUT
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SueñoDTOReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - sue-ño-controller
+      summary: eliminar
+      operationId: eliminarUsingDELETE
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /usuarios:
+    get:
+      tags:
+        - usuario-controller
+      summary: getUsuarioList
+      operationId: getUsuarioListUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsuarioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - usuario-controller
+      summary: addUsuario
+      operationId: addUsuarioUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /usuarios/login:
+    post:
+      tags:
+        - usuario-controller
+      summary: login
+      operationId: loginUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /usuarios/{id}:
+    get:
+      tags:
+        - usuario-controller
+      summary: getUsuarioById
+      operationId: getUsuarioByIdUsingGET
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UsuarioDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - usuario-controller
+      summary: updateUsuario
+      operationId: updateUsuarioUsingPUT
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UsuarioDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - usuario-controller
+      summary: deleteUsuario
+      operationId: deleteUsuarioUsingDELETE
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          style: simple
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  schemas:
+    Alimento:
+      title: Alimento
+      type: object
+      properties:
+        alergenos:
+          type: string
+        calendarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calendario'
+        calorias:
+          type: number
+          format: double
+        id:
+          type: integer
+          format: int32
+        ingredientes:
+          type: string
+        nombre:
+          type: string
+        valorNutricional:
+          type: string
+    AlimentoDTO:
+      title: AlimentoDTO
+      type: object
+      properties:
+        alergenos:
+          type: string
+        calorias:
+          type: number
+          format: double
+        id:
+          type: integer
+          format: int32
+        ingredientes:
+          type: string
+        nombre:
+          type: string
+        valorNutricional:
+          type: string
+    AlimentosHasUsuario:
+      title: AlimentosHasUsuario
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        idAlimento:
+          type: integer
+          format: int32
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    Calendario:
+      title: Calendario
+      type: object
+      properties:
+        alimento:
+          $ref: '#/components/schemas/Alimento'
+        datos:
+          type: string
+        ejercicio:
+          $ref: '#/components/schemas/Ejercicio'
+        fecha:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int32
+        idUsuario:
+          type: integer
+          format: int32
+        objetivo:
+          $ref: '#/components/schemas/Objetivo'
+    Comentario:
+      title: Comentario
+      type: object
+      properties:
+        contenido:
+          type: string
+        id:
+          type: integer
+          format: int32
+        post:
+          $ref: '#/components/schemas/Post'
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    ComentarioDTO:
+      title: ComentarioDTO
+      type: object
+      properties:
+        contenido:
+          type: string
+        id:
+          type: integer
+          format: int32
+        post:
+          $ref: '#/components/schemas/PostDTO'
+        usuario:
+          $ref: '#/components/schemas/UsuarioDTO'
+    Ejercicio:
+      title: Ejercicio
+      type: object
+      properties:
+        calendarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calendario'
+        descripcion:
+          type: string
+        id:
+          type: integer
+          format: int32
+        musculos:
+          type: string
+        nombre:
+          type: string
+        repeticiones:
+          type: integer
+          format: int32
+        series:
+          type: integer
+          format: int32
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    EjercicioDTO:
+      title: EjercicioDTO
+      type: object
+      properties:
+        descripcion:
+          type: string
+        id:
+          type: integer
+          format: int32
+        musculos:
+          type: string
+        nombre:
+          type: string
+        repeticiones:
+          type: integer
+          format: int32
+        series:
+          type: integer
+          format: int32
+        usuario:
+          $ref: '#/components/schemas/UsuarioDTO'
+    ModelAndView:
+      title: ModelAndView
+      type: object
+      properties:
+        empty:
+          type: boolean
+        model:
+          type: object
+        modelMap:
+          type: object
+          additionalProperties:
+            type: object
+        reference:
+          type: boolean
+        status:
+          type: string
+          enum:
+            - ACCEPTED
+            - ALREADY_REPORTED
+            - BAD_GATEWAY
+            - BAD_REQUEST
+            - BANDWIDTH_LIMIT_EXCEEDED
+            - CHECKPOINT
+            - CONFLICT
+            - CONTINUE
+            - CREATED
+            - DESTINATION_LOCKED
+            - EXPECTATION_FAILED
+            - FAILED_DEPENDENCY
+            - FORBIDDEN
+            - FOUND
+            - GATEWAY_TIMEOUT
+            - GONE
+            - HTTP_VERSION_NOT_SUPPORTED
+            - IM_USED
+            - INSUFFICIENT_SPACE_ON_RESOURCE
+            - INSUFFICIENT_STORAGE
+            - INTERNAL_SERVER_ERROR
+            - I_AM_A_TEAPOT
+            - LENGTH_REQUIRED
+            - LOCKED
+            - LOOP_DETECTED
+            - METHOD_FAILURE
+            - METHOD_NOT_ALLOWED
+            - MOVED_PERMANENTLY
+            - MOVED_TEMPORARILY
+            - MULTIPLE_CHOICES
+            - MULTI_STATUS
+            - NETWORK_AUTHENTICATION_REQUIRED
+            - NON_AUTHORITATIVE_INFORMATION
+            - NOT_ACCEPTABLE
+            - NOT_EXTENDED
+            - NOT_FOUND
+            - NOT_IMPLEMENTED
+            - NOT_MODIFIED
+            - NO_CONTENT
+            - OK
+            - PARTIAL_CONTENT
+            - PAYLOAD_TOO_LARGE
+            - PAYMENT_REQUIRED
+            - PERMANENT_REDIRECT
+            - PRECONDITION_FAILED
+            - PRECONDITION_REQUIRED
+            - PROCESSING
+            - PROXY_AUTHENTICATION_REQUIRED
+            - REQUESTED_RANGE_NOT_SATISFIABLE
+            - REQUEST_ENTITY_TOO_LARGE
+            - REQUEST_HEADER_FIELDS_TOO_LARGE
+            - REQUEST_TIMEOUT
+            - REQUEST_URI_TOO_LONG
+            - RESET_CONTENT
+            - SEE_OTHER
+            - SERVICE_UNAVAILABLE
+            - SWITCHING_PROTOCOLS
+            - TEMPORARY_REDIRECT
+            - TOO_EARLY
+            - TOO_MANY_REQUESTS
+            - UNAUTHORIZED
+            - UNAVAILABLE_FOR_LEGAL_REASONS
+            - UNPROCESSABLE_ENTITY
+            - UNSUPPORTED_MEDIA_TYPE
+            - UPGRADE_REQUIRED
+            - URI_TOO_LONG
+            - USE_PROXY
+            - VARIANT_ALSO_NEGOTIATES
+        view:
+          $ref: '#/components/schemas/View'
+        viewName:
+          type: string
+    Objetivo:
+      title: Objetivo
+      type: object
+      properties:
+        calendarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calendario'
+        descripcion:
+          type: string
+        fechaFinal:
+          type: string
+          format: date-time
+        fechaInicio:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    ObjetivoDTO:
+      title: ObjetivoDTO
+      type: object
+      properties:
+        descripcion:
+          type: string
+        fechaFinal:
+          type: string
+          format: date-time
+        fechaInicio:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        usuario:
+          $ref: '#/components/schemas/UsuarioDTO'
+    Post:
+      title: Post
+      type: object
+      properties:
+        comentarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comentario'
+        descripcion:
+          type: string
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    PostDTO:
+      title: PostDTO
+      type: object
+      properties:
+        descripcion:
+          type: string
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        usuario:
+          $ref: '#/components/schemas/UsuarioDTO'
+    Sueño:
+      title: Sueño
+      type: object
+      properties:
+        calidadSueño:
+          type: string
+        comentario:
+          type: string
+        horaFinal:
+          $ref: '#/components/schemas/Time'
+        horaInicial:
+          $ref: '#/components/schemas/Time'
+        id:
+          type: integer
+          format: int32
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    SueñoDTOReq:
+      title: SueñoDTOReq
+      type: object
+      properties:
+        calidadSueño:
+          type: string
+        comentario:
+          type: string
+        horaFinal:
+          $ref: '#/components/schemas/TimeReq'
+        horaInicial:
+          $ref: '#/components/schemas/TimeReq'
+        id:
+          type: integer
+          format: int32
+        usuario:
+          $ref: '#/components/schemas/UsuarioDTO'
+    SueñoDTORes:
+      title: SueñoDTORes
+      type: object
+      properties:
+        calidadSueño:
+          type: string
+        comentario:
+          type: string
+        horaFinal:
+          $ref: '#/components/schemas/TimeRes'
+        horaInicial:
+          $ref: '#/components/schemas/TimeRes'
+        id:
+          type: integer
+          format: int32
+        usuario:
+          $ref: '#/components/schemas/UsuarioDTO'
+    Time:
+      title: Time
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+        hours:
+          type: integer
+          format: int32
+        minutes:
+          type: integer
+          format: int32
+        month:
+          type: integer
+          format: int32
+        seconds:
+          type: integer
+          format: int32
+        time:
+          type: integer
+          format: int64
+        year:
+          type: integer
+          format: int32
+    TimeReq:
+      title: TimeReq
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+        hours:
+          type: integer
+          format: int32
+        minutes:
+          type: integer
+          format: int32
+        month:
+          type: integer
+          format: int32
+        seconds:
+          type: integer
+          format: int32
+        time:
+          type: integer
+          format: int64
+        year:
+          type: integer
+          format: int32
+    TimeRes:
+      title: TimeRes
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int32
+        day:
+          type: integer
+          format: int32
+        hours:
+          type: integer
+          format: int32
+        minutes:
+          type: integer
+          format: int32
+        month:
+          type: integer
+          format: int32
+        seconds:
+          type: integer
+          format: int32
+        time:
+          type: integer
+          format: int64
+        timezoneOffset:
+          type: integer
+          format: int32
+        year:
+          type: integer
+          format: int32
+    Usuario:
+      title: Usuario
+      type: object
+      properties:
+        alimentosHasUsuarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlimentosHasUsuario'
+        apellidos:
+          type: string
+        ejercicios:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ejercicio'
+        email:
+          type: string
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        objetivos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Objetivo'
+        password:
+          type: string
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+        sueños:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sueño'
+    UsuarioDTO:
+      title: UsuarioDTO
+      type: object
+      properties:
+        apellidos:
+          type: string
+        email:
+          type: string
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        password:
+          type: string
+    View:
+      title: View
+      type: object
+      properties:
+        contentType:
+          type: string

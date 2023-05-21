@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="Atos-FitTrack-Back-Grupo-5">
+		<class>com.atos.fittrack.entities.Alimento</class>
+		<class>com.atos.fittrack.entities.Calendario</class>
+		<class>com.atos.fittrack.entities.Comentario</class>
+		<class>com.atos.fittrack.entities.Dieta</class>
+		<class>com.atos.fittrack.entities.Dietaalimento</class>
+		<class>com.atos.fittrack.entities.Ejercicio</class>
+		<class>com.atos.fittrack.entities.EjercicioVr</class>
+		<class>com.atos.fittrack.entities.Objetivo</class>
+		<class>com.atos.fittrack.entities.Post</class>
+		<class>com.atos.fittrack.entities.Sueño</class>
+		<class>com.atos.fittrack.entities.Usuario</class>
+		<class>com.atos.fittrack.entities.VideoVr</class>
+	</persistence-unit>
+</persistence>
